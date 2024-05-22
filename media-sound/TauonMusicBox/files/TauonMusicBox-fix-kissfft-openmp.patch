@@ -1,0 +1,20 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cf79faf..bdd9bf1 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -7,13 +7,13 @@ find_package(PkgConfig REQUIRED)
+ 
+ pkg_check_modules(phazor REQUIRED flac libopenmpt libmpg123 opus opusfile wavpack samplerate)
+ 
+-find_package(kissfft CONFIG COMPONENTS float)
++find_package(kissfft CONFIG COMPONENTS float-openmp)
+ if(NOT kissfft_FOUND)
+ 	add_subdirectory(src/phazor/kissfft)
+ endif()
+ 
+ target_include_directories(phazor PRIVATE ${phazor_INCLUDE_DIRS})
+-target_link_libraries(phazor kissfft::kissfft ${phazor_LIBRARIES})
++target_link_libraries(phazor kissfft::kissfft-float-openmp ${phazor_LIBRARIES})
+ 
+ 
+ install(TARGETS phazor DESTINATION ${CMAKE_SOURCE_DIR}/lib)
