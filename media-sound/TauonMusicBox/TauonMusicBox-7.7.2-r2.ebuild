@@ -121,6 +121,9 @@ python_install() {
         doicon -s scalable extra/tauonmb.svg
 
         distutils-r1_python_install
+
+	# link libphazor libray to prevet a hardcode check of library
+	dosym /usr/lib64/libphazor.so "/usr/share/${PN}/lib/libphazor.so"
 }
 
 pkg_postinst() {
