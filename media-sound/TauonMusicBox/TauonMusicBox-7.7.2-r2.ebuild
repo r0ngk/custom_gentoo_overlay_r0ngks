@@ -122,7 +122,7 @@ python_install() {
 
         distutils-r1_python_install
 
-	# link libphazor to prevent error due to hardcode check of library
+	# link libphazor to prevent error due to a hardcode check of library path
 	dosym /usr/lib64/libphazor.so "/usr/share/${PN}/lib/libphazor.so"
 }
 
